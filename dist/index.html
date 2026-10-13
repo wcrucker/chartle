@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f4ee"><meta name="description" content="Guess an album from the RYM top 1,000 in ten tries."><title>Chartle</title><link rel="icon" type="image/svg+xml" href="./icon.svg"><link rel="stylesheet" href="./style.css"></head><body>
+<div class="shell"><header><a href="./" class="brand" aria-label="Chartle home">CHARTLE</a><nav><button id="stats-button">Stats</button><button id="help-button">How to play</button></nav></header>
+<main><div class="game-top"><div class="mode-switch" role="group" aria-label="Game mode"><button id="daily-mode" class="active" aria-pressed="true">Daily</button><button id="practice-mode" aria-pressed="false">Practice</button></div><span id="puzzle-date"></span></div>
+<p class="intro">Guess the album. RYM top 1,000. Ten tries.</p><span id="edition" hidden></span>
+<section class="play" aria-label="Album guessing game"><div class="turn-line"><span id="turn-label">Loading albums…</span><span id="turn-dots" hidden></span></div>
+<div class="search-area" id="search-area"><div class="search-box"><input id="album-search" type="search" role="combobox" aria-label="Album or artist" aria-autocomplete="list" aria-controls="search-results" aria-expanded="false" autocomplete="off" placeholder="Album or artist" disabled></div><ul id="search-results" role="listbox" aria-label="Matching albums" hidden></ul><div id="search-message" class="search-message" aria-live="polite"></div></div>
+<div id="status" role="status" aria-live="polite"></div><section id="result" hidden aria-label="Game result"></section>
+<div class="legend"><span><i class="correct"></i>Match</span><span><i class="close"></i>Close</span><span><i class="wrong"></i>No match</span><button id="clue-help">Clue rules</button></div>
+<div id="guesses" aria-label="Your guesses"></div><div id="empty-state" class="empty-state"><div class="column-labels"><span>Rank</span><span>Year</span><span>Gender</span><span>Country</span><span>Genre</span><span>Members</span></div><p>Your guesses appear here.</p></div>
+<div class="bottom-actions"><button id="give-up" hidden>Reveal answer</button><button id="new-practice" hidden>New game</button></div></section>
+<footer><button id="data-button">Albums & sources</button><span>Inspired by <a href="https://spotle.io/" target="_blank" rel="noreferrer">Spotle</a></span></footer>
+</main></div><dialog id="info-dialog"><button class="dialog-close" aria-label="Close dialog">Close</button><div id="dialog-content"></div></dialog><script type="module" src="./app.js"></script></body></html>
