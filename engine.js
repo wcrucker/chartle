@@ -2,7 +2,7 @@ export const MAX_GUESSES=10;
 export const CATEGORIES=['rank','year','gender','country','genre','structure'];
 export const LABELS={rank:'RYM rank',year:'Year',gender:'Gender',country:'Country',genre:'Genre',structure:'Members'};
 export const GENRES=['Jazz','Rock','Folk','Psychedelic/Shoegaze','Classical','Pop','Hip-Hop','Prog','Latin','Electronica','Metal','Punk','Country','Funk/Soul','Reggae'];
-export function albumPool(albums,mode='daily',practiceSize=500){return albums.filter(a=>a.rank<=(mode==='practice'&&practiceSize===1000?1000:500))}
+export function albumPool(albums){return albums.filter(a=>a.rank>=1&&a.rank<=500)}
 export function normalize(s){return String(s||'').normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim()}
 export function searchAlbums(albums,query,guessed=[],limit=8){
  const words=normalize(query).split(' ').filter(Boolean);if(!words.length)return [];
@@ -45,4 +45,4 @@ export function safeSaved(raw,albums,answerId){
   for(const id of data.guesses){if(typeof id!=='string'||!valid.has(id)||ids.includes(id)||ids.length>=10)continue;ids.push(id);if(id===answerId)break}return ids;
  }catch{return []}
 }
-export function shareText(mode,date,rows,outcome){const symbols={correct:'🟩',close:'🟨',wrong:'⬛',unknown:'⬜'};return `Chartle ${mode==='daily'?date:mode==='practice1000'?'Practice · Top 1,000':'Practice · Top 500'} · ${outcome==='won'?rows.length:'X'}/10\n${rows.map(r=>r.clues.map(c=>symbols[c.state]).join('')).join('\n')}`}
+export function shareText(mode,date,rows,outcome){const symbols={correct:'🟩',close:'🟨',wrong:'⬛',unknown:'⬜'};return `Chartle ${mode==='daily'?date:'Practice'} · ${outcome==='won'?rows.length:'X'}/10\n${rows.map(r=>r.clues.map(c=>symbols[c.state]).join('')).join('\n')}`}
